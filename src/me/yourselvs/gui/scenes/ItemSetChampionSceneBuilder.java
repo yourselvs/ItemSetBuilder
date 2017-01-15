@@ -23,7 +23,7 @@ public class ItemSetChampionSceneBuilder {
 	private static Scene scene;
 	
 	private static Map<String, GridPane> itemSetGrids = new HashMap<String, GridPane>();
-	private static Map<Integer, TextArea> itemSets = new HashMap<Integer, TextArea>();
+	private static Map<Integer, GridPane> itemSets = new HashMap<Integer, GridPane>();
 	
 	public static Node getNode() {
 		if(node == null)
@@ -51,8 +51,8 @@ public class ItemSetChampionSceneBuilder {
 			}
 		});
 		
-		backButton.setPrefHeight(GUIMeta.getBackHeight());
-		backButton.setPrefWidth(GUIMeta.getBackWidth());
+		backButton.setPrefHeight(GUIMeta.getButtonHeight());
+		backButton.setPrefWidth(GUIMeta.getButtonWidth());
 		grid.add(backButton, 0, 0);
 		
 		GridPane championGrid = new GridPane();
@@ -70,20 +70,22 @@ public class ItemSetChampionSceneBuilder {
 		
 		
 		championScroll.setContent(championGrid);
-		championScroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getBackHeight());
+		championScroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getButtonHeight());
 		championScroll.setPrefWidth(GUIMeta.getWidth() / 4);
 		grid.add(championScroll, 0, 1);
 		
-		setListScroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getBackHeight());
+		setListScroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getButtonHeight());
 		setListScroll.setPrefWidth(GUIMeta.getWidth() / 4);
 		grid.add(setListScroll, 1, 1);
 		
-		itemSetScroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getBackHeight());
+		itemSetScroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getButtonHeight());
 		itemSetScroll.setPrefWidth(GUIMeta.getWidth() / 2);
 		grid.add(itemSetScroll, 2, 1);
 		
 		return grid;
 	}
+	
+	
 	
 	private static class ChampionButtonHandler implements EventHandler<ActionEvent> {
 		
@@ -112,8 +114,8 @@ public class ItemSetChampionSceneBuilder {
 				}
 				
 				Button button = new Button("New");
-				button.setPrefHeight(GUIMeta.getBackHeight());
-				button.setPrefWidth(GUIMeta.getBackWidth());
+				button.setPrefHeight(GUIMeta.getButtonHeight());
+				button.setPrefWidth(GUIMeta.getButtonWidth());
 				button.setOnAction(new NewSetButtonHandler());
 				
 				grid.add(button, 0, 0);
@@ -144,9 +146,24 @@ public class ItemSetChampionSceneBuilder {
 				text.setText(ItemSetBuilder.buildItemSetMeta(itemSet));
 				
 				text.setPrefWidth(GUIMeta.getWidth() / 2 - 2);
-				text.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getBackHeight() - 2);
+				text.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getButtonHeight() - GUIMeta.getButtonHeight() - 2);
 				
-				itemSets.put(itemSet.hashCode(), text);
+				GridPane grid = new GridPane();
+				
+				Button editButton = new Button("Edit");
+				editButton.setPrefWidth(GUIMeta.getButtonWidth());
+				editButton.setPrefHeight(GUIMeta.getButtonHeight());
+				editButton.setOnAction(new EditSetButtonHandler(itemSet));
+				
+				Button deleteButton = new Button("Delete");
+				deleteButton.setPrefWidth(GUIMeta.getButtonWidth());
+				deleteButton.setPrefHeight(GUIMeta.getButtonHeight());
+				deleteButton.setOnAction(new DeleteSetButtonHandler(itemSet));
+				
+				grid.add(editButton, 0, 0);
+				grid.add(deleteButton, 1, 0);
+				grid.add(text, 0, 1);
+				itemSets.put(itemSet.hashCode(), grid);
 			}
 			
 			scroll.setContent(itemSets.get(itemSet.hashCode()));
@@ -155,6 +172,36 @@ public class ItemSetChampionSceneBuilder {
 	}
 	
 	private static class NewSetButtonHandler implements EventHandler<ActionEvent> {
+		
+		
+		
+		@Override
+		public void handle(ActionEvent event) {
+			
+		}
+	}
+	
+	private static class EditSetButtonHandler implements EventHandler<ActionEvent> {
+		
+		private ItemSet itemSet;
+		
+		public EditSetButtonHandler(ItemSet itemSet) {
+			this.itemSet = itemSet;
+		}
+		
+		@Override
+		public void handle(ActionEvent event) {
+			
+		}
+	}
+
+	private static class DeleteSetButtonHandler implements EventHandler<ActionEvent> {
+	
+		private ItemSet itemSet;
+		
+		public DeleteSetButtonHandler(ItemSet itemSet) {
+			this.itemSet = itemSet;
+		}
 		
 		@Override
 		public void handle(ActionEvent event) {

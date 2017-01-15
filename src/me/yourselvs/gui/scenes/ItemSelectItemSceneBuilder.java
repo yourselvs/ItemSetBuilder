@@ -50,13 +50,13 @@ public class ItemSelectItemSceneBuilder {
 			}
 		});
 		
-		backButton.setPrefHeight(GUIMeta.getBackHeight());
-		backButton.setPrefWidth(GUIMeta.getBackWidth());
+		backButton.setPrefHeight(GUIMeta.getButtonHeight());
+		backButton.setPrefWidth(GUIMeta.getButtonWidth());
 		grid.add(backButton, 0, 0);
 		
 		TextArea display = new TextArea();
 		display.setEditable(false);
-		display.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getBackHeight());
+		display.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getButtonHeight());
 		display.setPrefWidth(GUIMeta.getWidth() / 2);
 		display.setWrapText(true);
 		grid.add(display, 1, 1);
@@ -90,7 +90,7 @@ public class ItemSelectItemSceneBuilder {
 		
 		ScrollPane scroll = new ScrollPane();
 		scroll.setContent(buttonGrid);
-		scroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getBackHeight());
+		scroll.setPrefHeight(GUIMeta.getHeight() - GUIMeta.getButtonHeight());
 		scroll.setPrefWidth(GUIMeta.getWidth() / 2);
 		grid.add(scroll, 0, 1);
 		

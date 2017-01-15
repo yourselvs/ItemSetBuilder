@@ -8,6 +8,6 @@ public class GUIMeta {
 	
 	public static int getHeight() {return height;}
 	public static int getWidth() {return width;}
-	public static int getBackHeight() {return backHeight;}
-	public static int getBackWidth() {return backWidth;}
+	public static int getButtonHeight() {return backHeight;}
+	public static int getButtonWidth() {return backWidth;}
 }

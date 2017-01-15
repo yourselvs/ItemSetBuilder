@@ -45,8 +45,8 @@ public class ItemSelectHeaderSceneBuilder {
 				GUI.getStage().setScene(StartScreenSceneBuilder.getScene());
 			}
 		});
-		backButton.setPrefHeight(GUIMeta.getBackHeight());
-		backButton.setPrefWidth(GUIMeta.getBackWidth());
+		backButton.setPrefHeight(GUIMeta.getButtonHeight());
+		backButton.setPrefWidth(GUIMeta.getButtonWidth());
 		grid.add(backButton, 0, 0);
 		
 		int tracker = 2;

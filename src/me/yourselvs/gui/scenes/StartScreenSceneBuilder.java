@@ -42,8 +42,8 @@ public class StartScreenSceneBuilder {
 				GUI.getStage().close();
 			}
 		});
-		backButton.setPrefHeight(GUIMeta.getBackHeight());
-		backButton.setPrefWidth(GUIMeta.getBackWidth());
+		backButton.setPrefHeight(GUIMeta.getButtonHeight());
+		backButton.setPrefWidth(GUIMeta.getButtonWidth());
 		grid.add(backButton, 0, 0);
 		
 		Text text = new Text("Riot games install path: ");
